@@ -128,8 +128,3 @@ You will learn:
 * How real applications handle data
 * How to structure a small Java project
 
----
-
-# 🌟 Ready for daily challenges?
-
-Day 13 challenge will begin whenever you're ready.
