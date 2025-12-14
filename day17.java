@@ -19,8 +19,8 @@ public class day17{
     }
 
     public static void main(String[] args) {
-        int[] array = {2, 1, 2, 1, 1};
-        int k = 3;
+        int[] array = {1, 2, 3, 4, 5};
+        int k = 11;
 
         System.out.println(longestSubArrayWithSumAtMostK(array, k));
 

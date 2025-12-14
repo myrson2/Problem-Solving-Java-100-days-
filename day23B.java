@@ -15,18 +15,33 @@ import java.util.HashMap;
 
 public class day23B {
     static void minimumWindowSubstring(String s, String t){
-        HashMap<Character, Integer> mapT = new HashMap<>();
-
-        for(char charT : t.toCharArray()){
-            mapT.put(charT, mapT.getOrDefault(charT, 0) + 1);
-        }
-
         HashMap<Character, Integer> mapS = new HashMap<>();
+        HashMap<Character, Integer> mapT = new HashMap<>();
+        int left = 0, right, window = 0, count = 0;
 
-        for(char charS : s.toCharArray()){
-            mapS.put(charS, mapS.getOrDefault(charS, 0) + 1); 
+        for(char c : t.toCharArray()){
+            mapT.put(c, mapT.getOrDefault(c, 0) + 1);
         }
 
+        for(right = 0; right < s.length(); right++){
+            char c = s.charAt(right);
+
+            if(mapT.containsKey(c)){
+                mapS.put(c, mapS.getOrDefault(c, 0) + 1);
+
+                if(mapS.get(c).intValue() == mapT.get(c).intValue()){
+                    count++;
+                }
+            }   
+
+            while(count == mapT.size()){
+                    char lft = s.charAt(left);
+                    mapS.put(lft, mapS.get(lft)-1);
+                    left++;
+                }
+            window = Math.min(window, right - left + 1);
+        }
+        System.out.println(window);
     }
     public static void main(String[] args) {
         String s = "ADOBECODEBANC", t = "ABC";
